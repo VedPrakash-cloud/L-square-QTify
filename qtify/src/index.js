@@ -1,38 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './Navbar/Navbar';
-import Hero from './Hero/Hero';
-import Card from './cards/TopAlbum';
-import Album from './NewAlbum/NewAlbum'
+import App from './App';
+import {BrowserRouter} from "react-router-dom"
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
-const theme = createTheme({
-    palette:{
-        primary:{
-            main:"#34c94b",
-        },
-        secondary:{
-            main:"#121212",
-        },
-        tertiary:{
-            main: "#ffffff",
-        },
-    }
-});
+
+// const theme = createTheme({
+//     palette:{
+//         primary:{
+//             main:"#34c94b",
+//         },
+//         secondary:{
+//             main:"#121212",
+//         },
+//         tertiary:{
+//             main: "#ffffff",
+//         },
+//     }
+// });
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
-        <ThemeProvider theme={theme}>
+        <BrowserRouter>
             <App />
-            <Hero />
+            {/* <Hero />
             <Card />
-            <Album />
-        </ThemeProvider>
+            <Album /> */}
+        </BrowserRouter>
     </>
 );
 
