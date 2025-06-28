@@ -1,22 +1,18 @@
-import React from "react";
-import styles from "./Hero.module.css";
+import Box from '@mui/material/Box';
+import React from 'react';
+import Headphone from '../assets/vibrating-headphone 1.svg'
+import classes from './Hero.module.css'
 
-function Hero() {
-  return (
-    <div className={styles.hero}>
-      <div>
-        <h1>100 Thousand Songs, ad-free</h1>
-        <h1>Over thousands podcast episodes</h1>
-      </div>
-      <div>
-        <img
-          src={require("../assets/hero_headphones.svg")}
-          width={212}
-          alt="headphones"
-        />
-      </div>
-    </div>
-  );
+
+export default function hero(){
+
+    return (
+        <Box className={classes.background}>
+            <div className={classes.text}>
+                <h2>100 Thousand Songs, ad-free</h2>
+                <h2>Over thousands podcast episodes</h2>
+            </div>
+            <img src={Headphone} alt='Headphone' />
+        </Box>
+    );
 }
-
-export default Hero;
