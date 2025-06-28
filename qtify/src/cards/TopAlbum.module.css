@@ -8,7 +8,18 @@
 }
 
 .heading{
-    margin: 10px;
+    /* margin: 10px; */
     display: flex;
     justify-content: space-between;
+    position: relative;
+    transform: translateY(50%);
+}
+
+.navigationButton{
+    width: 105%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    transform: translateY(300%) translateX(-2.2%);
+    z-index: 10;
 }

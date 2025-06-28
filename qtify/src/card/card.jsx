@@ -8,7 +8,7 @@ import styles from "../card/card.module.css";
 
 export default function CardDisplay({ album }) {
   const theme = useTheme();
-
+  
   if (!album) return null;
 
   return (
