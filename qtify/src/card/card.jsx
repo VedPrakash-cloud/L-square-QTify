@@ -6,7 +6,7 @@ import { useTheme } from "@mui/material/styles";
 import CardActions from "@mui/material/CardActions";
 import styles from "../card/card.module.css";
 
-export default function CardDisplay({ album }) {
+export default function CardDisplay({ album, isSong = false }) {
   const theme = useTheme();
   
   if (!album) return null;
@@ -25,7 +25,11 @@ export default function CardDisplay({ album }) {
           <CardActions>
             <Chip
               className={styles.pills}
-              label={`${album.follows} Follows`}
+              label={
+                isSong
+                ? `${album.likes} Likes`
+                : `${album.follows} Follows`
+              }
               sx={{
                 backgroundColor: theme.palette.secondary.main,
                 color: theme.palette.tertiary.main,

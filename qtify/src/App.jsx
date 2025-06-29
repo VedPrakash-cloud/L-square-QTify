@@ -1,8 +1,9 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
-import Hero from "../src/Hero/Hero"
-import TopAlbum from "../src/cards/TopAlbum"
-import NewAlbum from "../src/NewAlbum/NewAlbum"
+import Hero from "../src/Hero/Hero";
+import TopAlbum from "../src/cards/TopAlbum";
+import NewAlbum from "../src/NewAlbum/NewAlbum";
+import SongTabs from "../src/Songs/SongTabs"
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
@@ -27,6 +28,7 @@ function App() {
       <Hero />
       <TopAlbum />
       <NewAlbum />
+      <SongTabs />
     </ThemeProvider>
   );
 }

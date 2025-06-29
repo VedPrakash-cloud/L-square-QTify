@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
 .search {
-  padding: 14px 20px;
+  padding: 13.5px 20px 14px 20px;
   height: 100%;
   border-radius: 8px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border: 1px solid var(--color-black);
+  border: 1px solid #121212;
   width: 502px;
   font-family: "Poppins";
 }
@@ -15,17 +15,17 @@
   display: flex;
   align-items: center;
   height: 100%;
-  border: 1px solid #121212;
   border-radius: 10px;
   /* overflow: hidden; */
 }
 
 .searchButton {
   border-radius: 0px 8px 8px 0px;
-  padding: 13px 20px;
+  padding: 11px 20px;
   height: 100%;
-  border: 1px solid var(--color-black);
-  border-left: 1px solid #121212;
+  /* border: 1px solid var(--color-black); */
+  border: 1px solid #121212;
+  border-left: none;
   cursor: pointer;
 }
 

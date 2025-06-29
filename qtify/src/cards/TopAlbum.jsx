@@ -58,10 +58,10 @@ export default function RenderCard() {
       ) : (
         <>
         <div className={classes.navigationButton}>
-          <Button className="swiperPrev">
+          <Button className="swiperPrev1">
             <img src={Prev} alt="Prev" />
             </Button>
-          <Button className="swiperNext">
+          <Button className="swiperNext1">
             <img src={Next} alt="Next" />
           </Button>
         </div>
@@ -70,8 +70,8 @@ export default function RenderCard() {
           spaceBetween={40}
           slidesPerView={6}
           navigation={{
-            prevEl:".swiperPrev",
-            nextEl:".swiperNext",
+            prevEl:".swiperPrev1",
+            nextEl:".swiperNext1",
           }}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
