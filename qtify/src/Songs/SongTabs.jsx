@@ -36,13 +36,6 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-// function a11yProps(index) {
-//   return {
-//     id: `simple-tab-${index}`,
-//     "aria-controls": `simple-tabpanel-${index}`,
-//   };
-// }
-
 export default function BasicTabs() {
   const [value, setValue] = useState(0);
   const [genres, setGenres] = useState([]);
@@ -91,6 +84,7 @@ export default function BasicTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
 
   return (
     <>

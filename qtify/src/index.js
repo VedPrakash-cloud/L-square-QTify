@@ -6,30 +6,11 @@ import {BrowserRouter} from "react-router-dom"
 import reportWebVitals from './reportWebVitals';
 
 
-
-// const theme = createTheme({
-//     palette:{
-//         primary:{
-//             main:"#34c94b",
-//         },
-//         secondary:{
-//             main:"#121212",
-//         },
-//         tertiary:{
-//             main: "#ffffff",
-//         },
-//     }
-// });
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
         <BrowserRouter>
             <App />
-            {/* <Hero />
-            <Card />
-            <Album /> */}
         </BrowserRouter>
     </>
 );

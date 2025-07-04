@@ -59,10 +59,10 @@ export default function FetchNewAlbum() {
         <>
         <div className={classes.navigationButton}>
           <Button className="swiperPrev">
-            <img src={Prev} alt="Prev" />
+            <img src={Prev} alt="Prev"/>
             </Button>
           <Button className="swiperNext">
-            <img src={Next} alt="Next" />
+            <img src={Next} alt="Next"/>
           </Button>
         </div>
         <Swiper

@@ -46,7 +46,7 @@ export default function RenderCard() {
         </h4>
       </div>
       {showAll ? (
-        <Box sx={{ flexGrow: 1, p: 2 }}>
+        <Box sx={{ flexGrow: 1, p:2 }}>
           <Grid container spacing={2}>
             {data.map((album) => (
               <Grid key={album.id}>
@@ -67,7 +67,7 @@ export default function RenderCard() {
         </div>
         <Swiper
           modules={[Navigation, A11y]}
-          spaceBetween={40}
+          spaceBetween={20}
           slidesPerView={6}
           navigation={{
             prevEl:".swiperPrev1",
