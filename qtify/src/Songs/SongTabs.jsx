@@ -121,7 +121,7 @@ export default function BasicTabs() {
             <Swiper
               modules={[Navigation, A11y]}
               spaceBetween={40}
-              slidesPerView={6}
+              slidesPerView={7}
               navigation={{
                 prevEl: ".swiperPrev2",
                 nextEl: ".swiperNext2",

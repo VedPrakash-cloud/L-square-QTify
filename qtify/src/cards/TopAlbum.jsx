@@ -68,7 +68,7 @@ export default function RenderCard() {
         <Swiper
           modules={[Navigation, A11y]}
           spaceBetween={20}
-          slidesPerView={6}
+          slidesPerView={7}
           navigation={{
             prevEl:".swiperPrev1",
             nextEl:".swiperNext1",
