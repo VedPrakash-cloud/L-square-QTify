@@ -4,7 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import axios from "axios";
-import styles from "../Songs/SongTab.module.css";
+import classes from "../Songs/SongTab.module.css";
 import AlbumCard from "../card/card";
 import { Navigation, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -47,17 +47,29 @@ export default function BasicTabs() {
   useEffect(() => {
     const fetchGenre = async () => {
       try {
-        const response = await axios.get(
-          "https://qtify-backend-labs.crio.do/genres"
-        );
-        const apiGenre = response.data.data;
+
+        const [genreRes, songRes] = await Promise.all([
+          axios.get("https://qtify-backend-labs.crio.do/genres"),
+          axios.get("https://qtify-backend-labs.crio.do/songs"),
+        ]);
+
+        const apiGenre = genreRes.data.data;
+        const allSongs = songRes.data;
 
         const genreList = [{ key: "all", label: "all" }, ...apiGenre];
         setGenres(genreList);
 
-        for (const genre of genreList) {
-          await fetchSongsForGenre(genre.label);
+        const groupedSongs = {
+          all:allSongs,
         }
+
+        for (const genre of apiGenre) {
+          groupedSongs[genre.label] = allSongs.filter(
+            (song)=>song.genre.label === genre.label
+          )
+        }
+
+        setSongByGenre(groupedSongs);
       } catch (err) {
         console.error("Error fetching genre:", err);
       }
@@ -74,46 +86,29 @@ export default function BasicTabs() {
   }
 },[songByGenre]);
 
-
-
-  const fetchSongsForGenre = async (genreLabel) => {
-    try {
-      const genreQuery = genreLabel === "All" ? "" : `?genre=${genreLabel}`;
-      const response = await axios.get(
-        `https://qtify-backend-labs.crio.do/songs${genreQuery}`
-      );
-      setSongByGenre((prev) => ({
-        ...prev,
-        [genreLabel]: response.data,
-      }));
-    } catch (err) {
-      console.error(`Error fetching songs for ${genreLabel} :`, err);
-    }
-  };
-
-  const handleChange = (event, newValue) => {
+  const handleChange = (event, newValue)=>{
     setValue(newValue);
-  };
+  }
 
   return (
     <>
-      <h3 className={styles.mainHeading}>Songs</h3>
+      <h3 className={classes.mainHeading}>Songs</h3>
       <Box sx={{ width: "100%" }}>
         <Box
-          className={styles.tabBox}
+          className={classes.tabBox}
           sx={{ borderBottom: 1, color: "text", borderColor: "divider" }}
         >
           <Tabs
             value={value}
             onChange={handleChange}
             aria-label="genre tabs"
-            className={styles.tab}
+            className={classes.tab}
           >
             {genres.map((genre, index) => (
               <Tab
                 key={genre.key}
                 label={genre.label}
-                className={styles.tab}
+                className={classes.tab}
                 id={`simple-tab-${index}`}
                 aria-controls={`simple-tabpanel-${index}`}
               />
@@ -122,14 +117,14 @@ export default function BasicTabs() {
         </Box>
         {genres.map((genre, index) => (
           <CustomTabPanel key={genre.key} value={value} index={index}>
-            <div className={styles.navigationButton1}
+            <div className={classes.navigationButton1}
               style={{ display: isStart ? "none" : "block"}}
             >
               <Button className="swiperPrev2">
                 <img src={Prev} alt="Prev" />
               </Button>
             </div>
-            <div className={styles.navigationButton}
+            <div className={classes.navigationButton}
             style={{ display: isEnd ? "none" : "block"}}>
               <Button className="swiperNext2">
                 <img src={Next} alt="Next" />
@@ -154,7 +149,7 @@ export default function BasicTabs() {
               }}
             >
               {songByGenre[genre.label]?.map((song) => (
-                <SwiperSlide key={song.id} style={{width: "160px"}} className={styles.mySlide}>
+                <SwiperSlide key={song.id} style={{width: "160px"}} className={classes.mySlide}>
                   <AlbumCard album={song} isSong={true} />
                 </SwiperSlide>
               ))}
