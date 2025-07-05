@@ -125,13 +125,13 @@ export default function BasicTabs() {
             <div className={styles.navigationButton1}
               style={{ display: isStart ? "none" : "block"}}
             >
-              <Button className="swiperPrev">
+              <Button className="swiperPrev2">
                 <img src={Prev} alt="Prev" />
               </Button>
             </div>
             <div className={styles.navigationButton}
             style={{ display: isEnd ? "none" : "block"}}>
-              <Button className="swiperNext">
+              <Button className="swiperNext2">
                 <img src={Next} alt="Next" />
               </Button>
             </div>
@@ -149,8 +149,8 @@ export default function BasicTabs() {
               });
             }}
               navigation={{
-                prevEl: ".swiperPrev",
-                nextEl: ".swiperNext",
+                prevEl: ".swiperPrev2",
+                nextEl: ".swiperNext2",
               }}
             >
               {songByGenre[genre.label]?.map((song) => (
