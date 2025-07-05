@@ -71,14 +71,14 @@ export default function RenderCard() {
           <div className={classes.navigationButton1}
           style={{ display: isStart ? "none" : "block"}}
           >
-            <Button className="swiperPrev">
+            <Button className="swiperPrev1">
               <img src={Prev} alt="Prev" />
             </Button>
           </div>
           <div className={classes.navigationButton}
           style={{ display: isEnd ? "none" : "block" }}
           >
-            <Button className="swiperNext">
+            <Button className="swiperNext1">
               <img src={Next} alt="Next" />
             </Button>
           </div>
