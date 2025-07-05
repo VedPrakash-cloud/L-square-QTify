@@ -3,9 +3,7 @@
 .mainHeading{
     color: #ffffff;
     font-family: "Poppins";
-    margin: 0 50px;
-    position: relative;
-    transform: translateY(150%);
+    margin: 0 50px 0 50px;
 }
 
 .tab{
@@ -15,15 +13,31 @@
 }
 
 .navigationButton{
-    width: 105%;
+    width:fit-content;
     display: flex;
     justify-content: space-between;
-    position: relative;
-    transform: translateY(300%) translateX(-2.2%);
+    position: absolute;
+    right: 0;
+    transform: translateY(150%);
     z-index: 10;
 }
+
+.navigationButton1{
+    width:fit-content;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    transform: translateY(150%);
+    z-index: 10;
+}
+
+
 .tabBox{
     margin-left: 25px;
-    position: relative;
-    transform: translateY(100%);
+}
+
+.mySlide{
+    display: flex;
+    justify-content: center;
+    width: 160px !important;
 }

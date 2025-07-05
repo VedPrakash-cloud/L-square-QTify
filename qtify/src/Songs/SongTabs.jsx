@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -40,6 +40,9 @@ export default function BasicTabs() {
   const [value, setValue] = useState(0);
   const [genres, setGenres] = useState([]);
   const [songByGenre, setSongByGenre] = useState({});
+  const [isStart, setIsStart] = useState(true);
+    const [isEnd, setIsEnd] = useState(false);
+    const swiperRef = useRef(null);
 
   useEffect(() => {
     const fetchGenre = async () => {
@@ -49,10 +52,7 @@ export default function BasicTabs() {
         );
         const apiGenre = response.data.data;
 
-        const genreList=[
-            {key: "all", label: "all"},
-                ...apiGenre
-        ]
+        const genreList = [{ key: "all", label: "all" }, ...apiGenre];
         setGenres(genreList);
 
         for (const genre of genreList) {
@@ -65,6 +65,16 @@ export default function BasicTabs() {
 
     fetchGenre();
   }, []);
+
+  useEffect(() => {
+  if (swiperRef.current) {
+    swiperRef.current.update();
+    setIsStart(swiperRef.current.isBeginning);
+    setIsEnd(swiperRef.current.isEnd);
+  }
+},[songByGenre]);
+
+
 
   const fetchSongsForGenre = async (genreLabel) => {
     try {
@@ -85,12 +95,14 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
-
   return (
     <>
       <h3 className={styles.mainHeading}>Songs</h3>
       <Box sx={{ width: "100%" }}>
-        <Box className={styles.tabBox} sx={{ borderBottom: 1, color: 'text', borderColor: 'divider'}}>
+        <Box
+          className={styles.tabBox}
+          sx={{ borderBottom: 1, color: "text", borderColor: "divider" }}
+        >
           <Tabs
             value={value}
             onChange={handleChange}
@@ -110,11 +122,16 @@ export default function BasicTabs() {
         </Box>
         {genres.map((genre, index) => (
           <CustomTabPanel key={genre.key} value={value} index={index}>
-            <div className={styles.navigationButton}>
-              <Button className="swiperPrev2">
+            <div className={styles.navigationButton1}
+              style={{ display: isStart ? "none" : "block"}}
+            >
+              <Button className="swiperPrev">
                 <img src={Prev} alt="Prev" />
               </Button>
-              <Button className="swiperNext2">
+            </div>
+            <div className={styles.navigationButton}
+            style={{ display: isEnd ? "none" : "block"}}>
+              <Button className="swiperNext">
                 <img src={Next} alt="Next" />
               </Button>
             </div>
@@ -122,13 +139,22 @@ export default function BasicTabs() {
               modules={[Navigation, A11y]}
               spaceBetween={40}
               slidesPerView={7}
+              onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+              setIsStart(swiper.isBeginning);
+              setIsEnd(swiper.isEnd);
+              swiper.on("slideChange", () => {
+                setIsStart(swiper.isBeginning);
+                setIsEnd(swiper.isEnd);
+              });
+            }}
               navigation={{
-                prevEl: ".swiperPrev2",
-                nextEl: ".swiperNext2",
+                prevEl: ".swiperPrev",
+                nextEl: ".swiperNext",
               }}
             >
               {songByGenre[genre.label]?.map((song) => (
-                <SwiperSlide key={song.id}>
+                <SwiperSlide key={song.id} style={{width: "160px"}} className={styles.mySlide}>
                   <AlbumCard album={song} isSong={true} />
                 </SwiperSlide>
               ))}

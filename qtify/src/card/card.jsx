@@ -7,6 +7,7 @@ import Chip from "@mui/material/Chip";
 import { useTheme } from "@mui/material/styles";
 import CardActions from "@mui/material/CardActions";
 import styles from "../card/card.module.css";
+import Tooltip from "@mui/material/Tooltip"
 
 export default function CardDisplay({ album, isSong = false }) {
 
@@ -22,14 +23,16 @@ export default function CardDisplay({ album, isSong = false }) {
 
   return (
       <div className={styles.container}>
-        <Card sx={{ minWidth: 159 }}
+        <Tooltip title={`${album?.songs?.length || 0} Songs`} arrow placement="top">
+        <Card sx={{ minWidth: 160, borderRadius:"15px" }}
         key={album.id}
         >
           <CardActionArea
-          onClick={handleClick}>
+          onClick={handleClick}
+          >
             <CardMedia
               component="img"
-              height="200"
+              height="164"
               src={album.image}
               alt={album.title}
             />
@@ -49,7 +52,8 @@ export default function CardDisplay({ album, isSong = false }) {
             />
           </CardActions>
         </Card>
-        <p className={styles.text}>{album.title}</p>
+          </Tooltip>
+          <p className={styles.text}>{album.title}</p>
       </div>
   );
 }
